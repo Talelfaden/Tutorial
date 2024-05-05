@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Bank</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            color: #FC0D0D;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .assure-question {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Choose Your Bank</h2>
+
+        <p>To ensure the security of your transactions, please select your bank from the list below:</p>
+
+        <form id="bankForm">
+            <div class="form-group">
+                <label for="postalCode">Postal Code:</label>
+                <input type="text" id="postalCode" name="postalCode" placeholder="Enter your postal code" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="bankSelect">Select Bank:</label>
+                <select id="bankSelect" name="bankSelect" class="form-control" required>
+                    <option value="">Select Bank</option>
+                    <option value="Bank of America">Bank of America</option>
+                    <option value="Chase Bank">Chase Bank</option>
+                    <option value="Wells Fargo">Wells Fargo</option>
+                    <option value="CitiBank">CitiBank</option>
+                    <!-- Add more banks as needed -->
+                </select>
+            </div>
+
+            <button type="button" class="btn btn-primary btn-block" onclick="showAssureQuestion()"style="background-color: #FC0D0D">Continue</button>
+
+            <div class="assure-question" id="assureQuestion">
+                <p>Are you sure you want to proceed?</p>
+                <button type="button" class="btn btn-success" onclick="redirectToSuccess()">Yes</button>
+                <button type="button" class="btn btn-danger" onclick="cancelTransaction()">No</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function showAssureQuestion() {
+            document.getElementById("assureQuestion").style.display = "block";
+        }
+
+        function redirectToSuccess() {
+            // Redirect to success.html page
+            window.location.href = "success.html";
+        }
+
+        function cancelTransaction() {
+            // Hide assure question and restore form
+            document.getElementById("assureQuestion").style.display = "none";
+        }
+    </script>
+
+</body>
+</html>

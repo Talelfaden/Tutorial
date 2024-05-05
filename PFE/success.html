@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            color: #28a745;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2 style="color: #FC0D0D">Success</h2>
+
+        <p>
+            Your transaction was successful!<br>
+            Your unique code to take your money is:
+            <strong id="codeDisplay"></strong><br>
+            Please keep this code safe.
+        </p>
+    </div>
+
+    <script>
+        // Generate a random 8-digit code using JavaScript
+        function generateRandomCode() {
+            const min = 10000000;
+            const max = 99999999;
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        // Display the random code in the HTML
+        document.getElementById("codeDisplay").textContent = generateRandomCode();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2 style="color: #FC0D0D" >Currency Converter</h2>
+
+        <input type="number" id="amountInput" placeholder="Enter amount" oninput="convertCurrency()" required>
+        
+        <select id="currencySelect" onchange="convertCurrency()" required>
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="GBP">GBP</option>
+            <option value="JPY">JPY</option>
+        </select>
+        
+        <input type="text" id="convertedAmount" placeholder="Converted amount" readonly>
+
+        <button onclick="goToBankPage()"style="background-color: #FC0D0D">Go to Bank</button>
+    </div>
+
+    <script>
+        function convertCurrency() {
+            const amountInput = document.getElementById("amountInput");
+            const currencySelect = document.getElementById("currencySelect");
+            const convertedAmount = document.getElementById("convertedAmount");
+            
+            const amount = parseFloat(amountInput.value);
+            const currency = currencySelect.value;
+            
+            // Replace these conversion rates with actual values from an API
+            const conversionRates = {
+                USD: 1,  // 1 USD = 1 USD
+                EUR: 0.82, // 1 USD = 0.82 EUR
+                GBP: 0.72, // 1 USD = 0.72 GBP
+                JPY: 109.83 // 1 USD = 109.83 JPY
+            };
+
+            const equivalentAmount = amount * conversionRates[currency];
+            convertedAmount.value = equivalentAmount.toFixed(2); // Round to 2 decimal places
+        }
+
+        function goToBankPage() {
+            window.location.href = "bank.html"; // Navigate to the bank page
+        }
+    </script>
+
+</body>
+</html>
